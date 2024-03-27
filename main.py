@@ -15,7 +15,7 @@ def encrypt(user_text, user_shift):
         char_index = alphabet.index(char)  # the index of the character in the alphabet array
         shifted_index = char_index + user_shift  # the new index after applying the cypher
         if shifted_index > 26:
-            shifted_index = (char_index + user_shift) % 26
+            shifted_index %= 26
         encrypted_text += alphabet[shifted_index]
     return encrypted_text
 
@@ -29,7 +29,7 @@ def decrypt(user_text, user_shift):
         char_index = alphabet.index(char)  # the index of the character in the alphabet array
         shifted_index = char_index - user_shift  # the new index after applying the cypher
         if shifted_index > 26:
-            shifted_index = (char_index - user_shift) % 26
+            shifted_index %= 26
         decrypted_text += alphabet[shifted_index]
     return decrypted_text
 
