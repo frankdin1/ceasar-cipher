@@ -17,6 +17,9 @@ def encrypt(text, shift):
 
     encrypted_text = ""
     for char in text:
+        if char == " ":
+            encrypted_text += " "
+            continue
         char_index = alphabet.index(char)  # the index of the character in the alphabet array
         shifted_index = char_index + shift  # the new index after applying the cypher
         if shifted_index > 26:
@@ -27,7 +30,6 @@ def encrypt(text, shift):
 
 encrypt(text, shift)
 
-# print(28 % 26)
 # TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount
 #  and print the encrypted text. e.g. plain_text = "hello" shift = 5 cipher_text = "mjqqt" print output: "The encoded
 #  text is mjqqt"
