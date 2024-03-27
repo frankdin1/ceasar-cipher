@@ -8,27 +8,41 @@ shift = int(input("Type the shift number:\n"))
 
 # TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
 
-def encrypt(text, shift):
-    # create an empty output text
-    # go through each character in the input text
-    # apply the shift to each character
-    # append the shifted character to the output text
-    # print/ return the output text
-
+def encrypt(user_text, user_shift):
     encrypted_text = ""
-    for char in text:
+    for char in user_text:
         if char == " ":
             encrypted_text += " "
             continue
         char_index = alphabet.index(char)  # the index of the character in the alphabet array
-        shifted_index = char_index + shift  # the new index after applying the cypher
+        shifted_index = char_index + user_shift  # the new index after applying the cypher
         if shifted_index > 26:
-            shifted_index = (char_index + shift) % 26
+            shifted_index = (char_index + user_shift) % 26
         encrypted_text += alphabet[shifted_index]
-    print(encrypted_text)
+    return encrypted_text
 
 
-encrypt(text, shift)
+def decrypt(user_text, user_shift):
+    decrypted_text = ""
+    for char in user_text:
+        if char == " ":
+            decrypted_text += " "
+            continue
+        char_index = alphabet.index(char)  # the index of the character in the alphabet array
+        shifted_index = char_index - user_shift  # the new index after applying the cypher
+        if shifted_index > 26:
+            shifted_index = (char_index - user_shift) % 26
+        decrypted_text += alphabet[shifted_index]
+    return decrypted_text
+
+
+if direction == "encode":
+    encoded_text = (encrypt(text, shift))
+    print(encoded_text)
+else:
+    decoded_text = decrypt(text, shift)
+    print(decoded_text)
+    # print(f"There's no {direction} function.")
 
 # TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount
 #  and print the encrypted text. e.g. plain_text = "hello" shift = 5 cipher_text = "mjqqt" print output: "The encoded
